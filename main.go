@@ -1,7 +1,11 @@
 package main
 
-import "github.com/RSheremeta/archiver/cmd"
+import (
+	"fmt"
+	"github.com/RSheremeta/archiver/cmd"
+)
 
 func main() {
 	cmd.Execute()
+	fmt.Println("Done!")
 }

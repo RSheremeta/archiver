@@ -7,7 +7,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Short: "Archiver for compression/decompression files",
+	Short: "Tiny Archiver for compression/decompression files",
 }
 
 func Execute() {
