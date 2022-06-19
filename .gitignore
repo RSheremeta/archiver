@@ -1,0 +1,8 @@
+# GoLand
+.idea
+
+# executable
+archiver
+
+# .sf transformed files
+*.sf
