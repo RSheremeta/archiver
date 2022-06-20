@@ -2,19 +2,24 @@ package cmd
 
 import (
 	"errors"
+	"fmt"
 	"path/filepath"
 	"strings"
 )
 
 var errEmptyPath = errors.New("ERROR: target file path is not specified")
 
+var unpackedExtension string
+
 const (
-	actionMethodShort = "sf"
-	actionMethodFull  = "shannon-fano"
-	packedExtension   = "sf"
-	unpackedExtension = "txt" // TODO - make dynamic and extract from the target file
-	method            = "method"
-	methodShort       = "m"
+	actionMethodShort        = "sf"
+	actionMethodFull         = "shannon-fano"
+	packedExtension          = "sf"
+	defaultUnpackedExtension = "txt"
+	method                   = "method"
+	methodShort              = "m"
+	extension                = "extension"
+	extensionShort           = "e"
 )
 
 func packedFileName(path string) string {
@@ -30,5 +35,5 @@ func filename(path, ext string) string {
 	fileExt := filepath.Ext(fileName)
 	baseName := strings.TrimSuffix(fileName, fileExt)
 
-	return baseName + "." + ext
+	return fmt.Sprintf("%v.%v", baseName, ext)
 }

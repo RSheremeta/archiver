@@ -21,6 +21,9 @@ func init() {
 	unpackCmd.Flags().StringP(method, methodShort, "",
 		fmt.Sprintf("decompression method available values: %q, %q", actionMethodShort, actionMethodFull))
 
+	unpackCmd.Flags().StringP(extension, extensionShort, "",
+		fmt.Sprintf("desired extension of the decomressed file. %q by default", ".txt"))
+
 	if err := unpackCmd.MarkFlagRequired(method); err != nil {
 		fmt.Printf("Error: Flag --%q (or -%q) is required\n", method, methodShort)
 		panic(err)
@@ -37,10 +40,16 @@ func unpack(cmd *cobra.Command, args []string) {
 	}
 
 	method := cmd.Flag(method).Value.String()
-
 	switch method {
 	case actionMethodShort, actionMethodFull:
 		decoder = compression.New(shannon_fano.NewGenerator())
+	}
+
+	fileExtension := cmd.Flag(extension).Value.String()
+	if fileExtension != "" {
+		unpackedExtension = fileExtension
+	} else {
+		unpackedExtension = defaultUnpackedExtension
 	}
 
 	filePath := args[0]
