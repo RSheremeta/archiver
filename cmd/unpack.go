@@ -30,6 +30,12 @@ func init() {
 	}
 }
 
+// unpack is intended to decompress compressed .sf file
+// available flags and opts:
+// "--method", "-m":
+// values: "sf", "shannon-fano"
+// "--extension", "-e":
+// values: any "txt", "rtf" - "txt" by default
 func unpack(cmd *cobra.Command, args []string) {
 	fmt.Println("Start decompressing your file...")
 

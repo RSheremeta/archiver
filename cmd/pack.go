@@ -27,6 +27,11 @@ func init() {
 	}
 }
 
+// pack is intended to compress raw file
+// available flags and opts:
+// "--method", "-m":
+// values: "sf", "shannon-fano"
+// supported raw file extensions: "rtf", "txt"
 func pack(cmd *cobra.Command, args []string) {
 	fmt.Println("Start compressing your file...")
 
